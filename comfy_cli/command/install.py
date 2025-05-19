@@ -69,7 +69,12 @@ def pip_install_comfyui_dependencies(
                 "torchaudio",
             ]
 
-            if plat == constants.OS.WINDOWS and cuda_version == constants.CUDAVersion.v12_6:
+            if plat == constants.OS.WINDOWS and cuda_version == constants.CUDAVersion.v12_8:
+                base_command += [
+                    "--extra-index-url",
+                    "https://download.pytorch.org/whl/cu128",
+                ]
+            elif plat == constants.OS.WINDOWS and cuda_version == constants.CUDAVersion.v12_6:
                 base_command += [
                     "--extra-index-url",
                     "https://download.pytorch.org/whl/cu126",
